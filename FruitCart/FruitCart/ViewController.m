@@ -7,7 +7,10 @@
 //
 
 #import "ViewController.h"
-#import "Fruit.h"
+#import "Vegetables.h"
+#import "Potato.h"
+#import "Onion.h"
+#import "Pumpkin.h"
 
 @interface ViewController ()
 
@@ -19,19 +22,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    _cart = [NSMutableArray arrayWithCapacity:0];
+    _cart = [NSMutableArray arrayWithCapacity:0];//?MSMutalbeArray
     
-    for(int i = 0; i < 50; i++){
-        NSString * fruitName = [NSString stringWithFormat:@"Banana %d", i];
-        
-        if((i % 10) == 0){
-            fruitName = [NSString stringWithFormat:@"Free Banana %d", i];
-        }
-        Fruit * anonFruit = [[Fruit alloc] initWithWithName:fruitName andColor:@"Yellow" andShape:@"Curved"];
-        [_cart addObject:anonFruit];
-    }
+    Potato * anonPotato = [[Potato alloc] init];
+    Pumpkin * anonPumpkin = [[Pumpkin alloc] init];
+    Onion * anonOnion = [[Onion alloc] init];
     
-    
+    [_cart addObject:anonPotato];
+    [_cart addObject:anonPumpkin];
+    [_cart addObject:anonOnion];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,10 +60,10 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"TableViewCell"];
     }
     
-    Fruit * tempFruit = [_cart objectAtIndex:indexPath.row];
+    Vegetables * tempVegetable = [_cart objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [tempFruit name];
-    cell.detailTextLabel.text = [tempFruit color];
+    cell.textLabel.text = [tempVegetable name];
+    cell.detailTextLabel.text = [tempVegetable color];
     return cell;
 }
 
